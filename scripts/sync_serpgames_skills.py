@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -42,6 +43,14 @@ def slug_to_title(slug: str) -> str:
 
 def repo_to_game_id(repo_name: str) -> str:
     return repo_name.removesuffix("-game")
+
+
+def repo_to_skill_name(repo_name: str) -> str:
+    return f"{repo_name}-online-unblocked"
+
+
+def canonical_play_url(repo_name: str) -> str:
+    return f"https://games.serp.co/games/{repo_to_game_id(repo_name)}/"
 
 
 def yaml_string(value: str) -> str:
@@ -163,6 +172,11 @@ def absolutize_relative_paths(text: str, repo_name: str, org: str = DEFAULT_ORG)
     return text
 
 
+def canonicalize_play_urls(text: str, repo_name: str) -> str:
+    github_pages_url = f"https://serpgames.github.io/{repo_name}/"
+    return text.replace(github_pages_url, canonical_play_url(repo_name))
+
+
 def clean_list(values: Any) -> list[str]:
     if not isinstance(values, list):
         return []
@@ -184,7 +198,7 @@ def build_fallback_body(repo: dict[str, Any], metadata: dict[str, Any] | None) -
     tags = clean_list(metadata.get("tags"))
     controls = clean_list(metadata.get("controls"))
     how_to_play = clean_list(metadata.get("howToPlay"))
-    play_url = str(metadata.get("gameUrl") or f"https://games.serp.co/games/{game_id}/")
+    play_url = canonical_play_url(repo_name)
     repository = str(metadata.get("repository") or repo.get("url") or f"https://github.com/serpgames/{repo_name}")
 
     if not controls:
@@ -251,6 +265,7 @@ def build_fallback_body(repo: dict[str, Any], metadata: dict[str, Any] | None) -
 
 
 def build_skill_doc(
+    skill_name: str,
     repo: dict[str, Any],
     readme: str | None,
     platform_metadata: dict[str, dict[str, Any]],
@@ -266,16 +281,32 @@ def build_skill_doc(
     else:
         content = readme.lstrip("\ufeff").strip()
         content = absolutize_relative_paths(content, repo["name"], org)
+        content = canonicalize_play_urls(content, repo["name"])
         readme_source = "readme"
 
     doc = (
         "---\n"
-        f"name: {repo['name']}\n"
+        f"name: {skill_name}\n"
         f"description: {yaml_string(description)}\n"
         "---\n\n"
         f"{content.strip()}\n"
     )
     return doc, readme_source
+
+
+def remove_stale_skill_dirs(active_skill_names: set[str]) -> None:
+    if not SKILLS_DIR.exists():
+        return
+
+    for skill_dir in SKILLS_DIR.iterdir():
+        if not skill_dir.is_dir() or skill_dir.name in active_skill_names:
+            continue
+
+        files = [path for path in skill_dir.rglob("*") if path.is_file()]
+        if files == [skill_dir / "SKILL.md"]:
+            shutil.rmtree(skill_dir)
+        else:
+            print(f"Skipping stale skill dir with extra files: {skill_dir}")
 
 
 def main() -> None:
@@ -284,21 +315,24 @@ def main() -> None:
 
     repos = fetch_repos(DEFAULT_ORG)
     platform_metadata = load_platform_metadata()
+    active_skill_names = {repo_to_skill_name(repo["name"]) for repo in repos}
+    remove_stale_skill_dirs(active_skill_names)
     manifest: list[dict[str, str]] = []
 
     for repo in repos:
         repo_name = repo["name"]
+        skill_name = repo_to_skill_name(repo_name)
         readme = fetch_readme(repo_name, DEFAULT_ORG)
-        doc, readme_source = build_skill_doc(repo, readme, platform_metadata, DEFAULT_ORG)
+        doc, readme_source = build_skill_doc(skill_name, repo, readme, platform_metadata, DEFAULT_ORG)
 
-        skill_dir = SKILLS_DIR / repo_name
+        skill_dir = SKILLS_DIR / skill_name
         skill_dir.mkdir(parents=True, exist_ok=True)
         (skill_dir / "SKILL.md").write_text(doc, encoding="utf-8")
 
         manifest.append(
             {
                 "repo": repo_name,
-                "skill": repo_name,
+                "skill": skill_name,
                 "url": repo["url"],
                 "pushedAt": repo["pushedAt"],
                 "source": f"{DEFAULT_ORG}/{repo_name}",
