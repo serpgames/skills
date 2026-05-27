@@ -1,0 +1,146 @@
+[
+  {
+    "repo": "2048-game",
+    "skill": "2048-game",
+    "url": "https://github.com/serpgames/2048-game",
+    "pushedAt": "2025-08-14T07:35:29Z",
+    "source": "serpgames/2048-game",
+    "readmeSource": "metadata-fallback"
+  },
+  {
+    "repo": "bad-ice-cream-2-game",
+    "skill": "bad-ice-cream-2-game",
+    "url": "https://github.com/serpgames/bad-ice-cream-2-game",
+    "pushedAt": "2026-05-27T07:54:27Z",
+    "source": "serpgames/bad-ice-cream-2-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "cookie-clicker-game",
+    "skill": "cookie-clicker-game",
+    "url": "https://github.com/serpgames/cookie-clicker-game",
+    "pushedAt": "2026-05-27T07:47:30Z",
+    "source": "serpgames/cookie-clicker-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "crossy-road-game",
+    "skill": "crossy-road-game",
+    "url": "https://github.com/serpgames/crossy-road-game",
+    "pushedAt": "2026-05-27T07:54:31Z",
+    "source": "serpgames/crossy-road-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "doodle-jump-game",
+    "skill": "doodle-jump-game",
+    "url": "https://github.com/serpgames/doodle-jump-game",
+    "pushedAt": "2026-05-27T07:47:17Z",
+    "source": "serpgames/doodle-jump-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "flappy-bird-game",
+    "skill": "flappy-bird-game",
+    "url": "https://github.com/serpgames/flappy-bird-game",
+    "pushedAt": "2026-05-27T07:47:24Z",
+    "source": "serpgames/flappy-bird-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "geometry-dash-game",
+    "skill": "geometry-dash-game",
+    "url": "https://github.com/serpgames/geometry-dash-game",
+    "pushedAt": "2026-05-27T08:52:59Z",
+    "source": "serpgames/geometry-dash-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "level-devil-game",
+    "skill": "level-devil-game",
+    "url": "https://github.com/serpgames/level-devil-game",
+    "pushedAt": "2026-05-27T07:54:28Z",
+    "source": "serpgames/level-devil-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "minesweeper-game",
+    "skill": "minesweeper-game",
+    "url": "https://github.com/serpgames/minesweeper-game",
+    "pushedAt": "2026-05-27T08:53:31Z",
+    "source": "serpgames/minesweeper-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "slope-2-game",
+    "skill": "slope-2-game",
+    "url": "https://github.com/serpgames/slope-2-game",
+    "pushedAt": "2026-05-27T08:52:18Z",
+    "source": "serpgames/slope-2-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "slope-game",
+    "skill": "slope-game",
+    "url": "https://github.com/serpgames/slope-game",
+    "pushedAt": "2026-05-27T08:52:30Z",
+    "source": "serpgames/slope-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "snake-game",
+    "skill": "snake-game",
+    "url": "https://github.com/serpgames/snake-game",
+    "pushedAt": "2025-08-13T09:33:38Z",
+    "source": "serpgames/snake-game",
+    "readmeSource": "metadata-fallback"
+  },
+  {
+    "repo": "temple-run-2-topvaz-game",
+    "skill": "temple-run-2-topvaz-game",
+    "url": "https://github.com/serpgames/temple-run-2-topvaz-game",
+    "pushedAt": "2026-05-27T08:52:04Z",
+    "source": "serpgames/temple-run-2-topvaz-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "tetris-flash-game",
+    "skill": "tetris-flash-game",
+    "url": "https://github.com/serpgames/tetris-flash-game",
+    "pushedAt": "2026-05-27T08:53:15Z",
+    "source": "serpgames/tetris-flash-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "tetris-game",
+    "skill": "tetris-game",
+    "url": "https://github.com/serpgames/tetris-game",
+    "pushedAt": "2025-08-02T00:14:43Z",
+    "source": "serpgames/tetris-game",
+    "readmeSource": "metadata-fallback"
+  },
+  {
+    "repo": "tiny-fishing-game",
+    "skill": "tiny-fishing-game",
+    "url": "https://github.com/serpgames/tiny-fishing-game",
+    "pushedAt": "2026-05-27T08:52:44Z",
+    "source": "serpgames/tiny-fishing-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "traffic-escape-game",
+    "skill": "traffic-escape-game",
+    "url": "https://github.com/serpgames/traffic-escape-game",
+    "pushedAt": "2026-05-27T07:54:29Z",
+    "source": "serpgames/traffic-escape-game",
+    "readmeSource": "readme"
+  },
+  {
+    "repo": "tunnel-rush-game",
+    "skill": "tunnel-rush-game",
+    "url": "https://github.com/serpgames/tunnel-rush-game",
+    "pushedAt": "2026-05-27T07:54:32Z",
+    "source": "serpgames/tunnel-rush-game",
+    "readmeSource": "readme"
+  }
+]
